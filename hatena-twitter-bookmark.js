@@ -11,8 +11,8 @@ var PLUGIN_INFO =
 <VimperatorPlugin>
 <name>{NAME}</name>
 <description>post current URL to twitter with hatena bookmark style</description>
-<version>1.2.0</version>
-<updateURL></updateURL>
+<version>1.0.0</version>
+<updateURL>http://github.com/yabeken/vimperator-plugin/blob/master/hatena-twitter-bookmark.js</updateURL>
 <author>yabeken</author>
 <license>Creative Commons</license>
 <detail><![CDATA[
@@ -24,7 +24,7 @@ var PLUGIN_INFO =
 (function(){
     liberator.modules.commands.addUserCommand(
     		["hatwib"],
-    		"post current URL to twitter with hatena bookmark style",
+    		"post current URL to twitter by hatena bookmark style",
     		function(arg){
     		    var [username, password] = (function(){
     		        try {
