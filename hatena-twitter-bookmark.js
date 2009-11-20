@@ -11,7 +11,10 @@
 //    1. Install Hatena Bookmark Addon for Firefox.
 //    https://addons.mozilla.org/ja/firefox/addon/11285
 // 
-//    2. Copy following codes to your .vimperatorrc
+//    2. Install twitter.js
+//    http://coderepos.org/share/browser/lang/javascript/vimperator-plugins/trunk/twitter.js
+//
+//    3. Copy following codes to your .vimperatorrc
 //    http://vimperator.g.hatena.ne.jp/teramako/20091117/1258474425
 js <<EOM
 liberator.modules.hateb_tags = (function(){
