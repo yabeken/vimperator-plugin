@@ -3,7 +3,7 @@ let PLUGIN_INFO =
     <name>{NAME}</name>
     <description>calculate with Google Sear	ch feature</description>
     <description lang="ja">Google の特殊な検索を用いた計算を行う</description>
-    <author mail="yabeken3@gmail.com">yabeken</author>
+    <author mail="yabeken@gmail.com">yabeken</author>
     <license document="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
     <version>0.10</version>
     <minVersion>2.0pre</minVersion>
