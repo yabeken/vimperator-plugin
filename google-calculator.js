@@ -71,7 +71,7 @@ commands.addUserCommand(['gcalc'],
 				liberator.echo("[Google Calculator] no result for " + args.string);
 				return;
 			}
-			if(true){
+			if(cp){
 				if(sup.stringValue == ""){
 					var m = res.stringValue.match(/= (.+)/);
 					if(m != null) util.copyToClipboard(m[1].replace("\xA0",""),true);
