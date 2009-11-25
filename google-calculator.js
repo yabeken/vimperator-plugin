@@ -1,13 +1,13 @@
 let PLUGIN_INFO = 
 <VimperatorPlugin>
     <name>{NAME}</name>
-    <description>calculate with Google Sear	ch feature</description>
-    <description lang="ja">Google の特殊な検索を用いた計算を行う</description>
+    <description>calculate with Google Search feature</description>
+    <description lang="ja">Google の特殊検索を用いた計算を行う</description>
     <author mail="yabeken@gmail.com">yabeken</author>
     <license document="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
     <version>0.10</version>
-    <minVersion>2.0pre</minVersion>
-    <maxVersion>2.0pre</maxVersion>
+    <minVersion>2.1</minVersion>
+    <maxVersion>2.1</maxVersion>
     <updateURL>http://github.com/yabeken/vimperator-plugin/blob/master/google-calculator.js</updateURL>
     <detail><![CDATA[
 == USAGE ==
@@ -46,7 +46,7 @@ commands.addUserCommand(['gcalc'],
 			xhr.open('GET','http://www.google.co.jp/search?q=' + encodeURIComponent(exp),false);
 			xhr.send(null);
 			if(xhr.status != 200){
-				throw "Failed to fetch result from 'http://www.google.co.jp/search'";
+				throw "[Google Calculator] Failed to get result from 'http://www.google.co.jp/search'";
 			}
 			var html = (function(htmlstr){
 				htmlstr = '<html xmlns="http://www.w3.org/1999/xhtml">'+htmlstr+'</html>';
@@ -66,17 +66,21 @@ commands.addUserCommand(['gcalc'],
 				return doc;
 			})(xhr.responseText);
 			var res = html.evaluate('id("res")//h2[@class="r"]/b/text()',html,null,XPathResult.STRING_TYPE,null);
+			var sup = html.evaluate('id("res")//h2[@class="r"]/b/sup/text()',html,null,XPathResult.STRING_TYPE,null);
 			if(res.stringValue == ""){
 				liberator.echo("[Google Calculator] no result for " + args.string);
 				return;
 			}
-			if(cp){
-				var m = res.stringValue.match(/= ([^ ]+)/);
-				if(m != null){
-					util.copyToClipboard(m[1],true);
+			if(true){
+				if(sup.stringValue == ""){
+					var m = res.stringValue.match(/= (.+)/);
+					if(m != null) util.copyToClipboard(m[1].replace("\xA0",""),true);
+				}else{
+					var m = res.stringValue.match(/= ([^ ]+)/);
+					if(m != null) util.copyToClipboard(((sup.stringValue == "") ? m[1] : (m[1] + "e" + sup.stringValue)).replace("\xA0",""),true);
 				}
 			}
-			liberator.echo("[Google Calculator] " + res.stringValue);
+			liberator.echo("[Google Calculator] " + res.stringValue + ((sup.stringValue == "") ? "" : ("^" + sup.stringValue)));
 		}catch(ex){
 			liberator.echoerr(ex);
 		}
