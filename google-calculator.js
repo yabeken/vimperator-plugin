@@ -68,7 +68,7 @@ commands.addUserCommand(['gcalc'],
 			var res = html.evaluate('id("res")//h2[@class="r"]/b/text()',html,null,XPathResult.STRING_TYPE,null);
 			var sup = html.evaluate('id("res")//h2[@class="r"]/b/sup/text()',html,null,XPathResult.STRING_TYPE,null);
 			if(res.stringValue == ""){
-				liberator.echo("[Google Calculator] no result for " + args.string);
+				liberator.echo("[Google Calculator] no result for '" + args.string + "'");
 				return;
 			}
 			if(cp){
