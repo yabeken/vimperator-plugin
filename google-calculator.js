@@ -37,7 +37,7 @@ commands.addUserCommand(['gcalc'],
 	'Google Calculator',
 	function (args,cp) {
 		try{
-			var exp = args.string.replace(/\u3000/," ").trim();
+			var exp = args.string.replace(/\u3000/," ").replace(/^\s+|\s+$/g,"");
 			if(exp.length < 3) return;
 			if(exp.split(" ").length == 2){
 				exp = exp.replace(" "," in ");
